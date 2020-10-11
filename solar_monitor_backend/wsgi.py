@@ -1,5 +1,5 @@
 """
-WSGI config for solar_web_monitor project.
+WSGI config for solar_monitor_backend project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'solar_web_monitor.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'solar_monitor_backend.settings')
 
 application = get_wsgi_application()
