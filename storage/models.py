@@ -61,9 +61,9 @@ class KilowattHours(Recorder):
 class AmpHours(Recorder):
     created_at = models.DateTimeField(default=timezone.now)
     recorded_at = models.DateTimeField(default=timezone.now)
-    location_id = models.ForeignKey(Location, on_delete=models.CASCADE)
-    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    group_id = models.ForeignKey(Group, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=10, decimal_places=1)
 
     def __str__(self):
