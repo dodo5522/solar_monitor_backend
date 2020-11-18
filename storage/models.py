@@ -3,12 +3,6 @@ from django.db import models
 from django.utils import timezone
 
 
-class Recorder(models.Model):
-    def record(self):
-        self.recorded_at = timezone.now()
-        self.save()
-
-
 class Location(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     zip_code = models.CharField(
@@ -31,34 +25,39 @@ class Location(models.Model):
         return self.__class__.__name__
 
 
-class Unit(models.Model):
-    created_at = models.DateTimeField(default=timezone.now)
-    unit_name = models.CharField(max_length=40)
-
-    def __str__(self):
-        return self.__class__.__name__
-
-
 class Group(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
-    group_name = models.CharField(max_length=40)
+    group = models.CharField(default='', max_length=32)
 
     def __str__(self):
         return self.__class__.__name__
 
-class KilowattHours(Recorder):
+
+class Source(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
-    recorded_at = models.DateTimeField(default=timezone.now)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    value = models.DecimalField(max_digits=10, decimal_places=1)
+    source = models.CharField(default='', max_length=32)
 
     def __str__(self):
         return self.__class__.__name__
 
 
-class AmpHours(Recorder):
+class Label(models.Model):
+    created_at = models.DateTimeField(default=timezone.now)
+    label = models.CharField(default='', max_length=16)
+
+    def __str__(self):
+        return self.__class__.__name__
+
+
+class Unit(models.Model):
+    created_at = models.DateTimeField(default=timezone.now)
+    unit = models.CharField(default='', max_length=16)
+
+    def __str__(self):
+        return self.__class__.__name__
+
+
+class Record(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     recorded_at = models.DateTimeField(default=timezone.now)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
