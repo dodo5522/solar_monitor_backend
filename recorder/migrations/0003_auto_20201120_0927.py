@@ -8,7 +8,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('storage', '0002_auto_20201017_1241'),
+        ('recorder', '0002_auto_20201017_1241'),
     ]
 
     operations = [
@@ -83,16 +83,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='record',
             name='group',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='storage.group'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recorder.group'),
         ),
         migrations.AddField(
             model_name='record',
             name='location',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='storage.location'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recorder.location'),
         ),
         migrations.AddField(
             model_name='record',
             name='unit',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='storage.unit'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recorder.unit'),
         ),
     ]
